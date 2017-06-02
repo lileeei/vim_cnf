@@ -44,7 +44,8 @@ Plug 'junegunn/vim-easy-align'
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
 " Multiple Plug commands can be written in a single line using | separators
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'sirver/ultisnips' | Plug 'honza/vim-snippets'
 
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -54,9 +55,20 @@ Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
 
+" markdown syntax
+Plug 'plasticboy/vim-markdown'
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 " Go
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+
+autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')  " replaces the current buffer with the alternate file.
+autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit') " open a new vertical split with the alternate file.
+autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split') " open the alternate file in a new split view.
+autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe') " open the alternate file in a new table.
+
+
+
 Plug 'fatih/vim-go', { 'tag': '*' }
 let g:go_fmt_command = "goimports"
 let g:go_highlight_types = 1
@@ -140,6 +152,13 @@ Plug 'vim-airline/vim-airline-themes'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 Plug 'majutsushi/tagbar'
 nmap <F8> :TagbarToggle<CR>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+" ctrlp
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+Plug 'ctrlpvim/ctrlp.vim'
+
 
 
 " Initialize plugin system
