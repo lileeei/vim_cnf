@@ -58,31 +58,6 @@ Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 " markdown syntax
 Plug 'plasticboy/vim-markdown'
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
-" Go
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
-
-autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')  " replaces the current buffer with the alternate file.
-autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit') " open a new vertical split with the alternate file.
-autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split') " open the alternate file in a new split view.
-autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe') " open the alternate file in a new table.
-
-
-
-Plug 'fatih/vim-go', { 'tag': '*' }
-let g:go_fmt_command = "goimports"
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-" Plug 'fatih/vim-go', {'do': 'GoInstallBinaries'}
-
-
-
-" Plugin options
-Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
 
 
@@ -159,6 +134,40 @@ nmap <F8> :TagbarToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 Plug 'ctrlpvim/ctrlp.vim'
 
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+" Go
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')  " replaces the current buffer with the alternate file.
+autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit') " open a new vertical split with the alternate file.
+autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split') " open the alternate file in a new split view.
+autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe') " open the alternate file in a new table.
+
+
+
+Plug 'fatih/vim-go', { 'tag': '*' }
+let g:go_fmt_command = "goimports"
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+" Plug 'fatih/vim-go', {'do': 'GoInstallBinaries'}
+
+
+
+" Plugin options
+Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+" rust
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+Plug 'rust-lang/rust.vim'
+let g:rustfmt_autosave = 1	" enable automatic running of RustFmt when save a buffer 
 
 
 " Initialize plugin system
