@@ -102,6 +102,7 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 " setting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+nmap <F5> :NERDTreeToggle<cr>
 nmap <F8> :TagbarToggle<CR>
 
 " Open :GoDeclsDir with ctrl-g
