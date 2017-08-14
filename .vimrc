@@ -134,6 +134,13 @@ nmap <F8> :TagbarToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 Plug 'ctrlpvim/ctrlp.vim'
 
+" Plug 'Chiel92/vim-autoformat'
+" noremap <F3> :Autoformat<CR>
+" au BufWrite * :Autoformat
+" let g:autoformat_verbosemode=1
+" let g:autoformat_autoindent = 0
+" let g:autoformat_retab = 0
+" let g:autoformat_remove_trailing_spaces = 0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
