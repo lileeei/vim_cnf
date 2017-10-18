@@ -104,6 +104,9 @@ Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 " rust
 Plug 'rust-lang/rust.vim'
 
+" rust racer
+Plug 'racer-rust/vim-racer'
+
 call plug#end()
 
 
@@ -113,6 +116,7 @@ call plug#end()
 nmap <F5> :NERDTreeToggle<cr>
 nmap <F8> :TagbarToggle<CR>
 
+" go setting
 " Open :GoDeclsDir with ctrl-g
 nmap <C-g> :GoDeclsDir<cr>
 imap <C-g> <esc>:<C-u>GoDeclsDir<cr>
@@ -129,5 +133,14 @@ let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 
-let g:rustfmt_autosave = 1	" enable automatic running of RustFmt when save a buffer 
 
+" rust setting
+set hidden
+let g:rustfmt_autosave = 1	" enable automatic running of RustFmt when save a buffer 
+let g:racer_cmd = "/home/lilei/.cargo/bin/racer"
+" let $RUST_SRC_PATH="<path-to-rust-srcdir>/src/"
+let g:racer_experimental_completer = 1
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+" au FileType rust nmap <leader>gd <Plug>(rust-doc)
