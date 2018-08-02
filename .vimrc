@@ -107,6 +107,12 @@ Plug 'rust-lang/rust.vim'
 " rust racer
 Plug 'racer-rust/vim-racer'
 
+" latex
+Plug 'lervag/vimtex'
+
+" A Vim Plugin for Lively Previewing LaTeX PDF Output
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+
 call plug#end()
 
 
@@ -144,3 +150,9 @@ au FileType rust nmap gd <Plug>(rust-def)
 au FileType rust nmap gs <Plug>(rust-def-split)
 au FileType rust nmap gx <Plug>(rust-def-vertical)
 " au FileType rust nmap <leader>gd <Plug>(rust-doc)
+"
+
+" latex setting
+autocmd Filetype tex setl updatetime=1
+let g:livepreview_previewer = 'open -a Preview'
+
