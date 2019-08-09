@@ -66,6 +66,8 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
 
+Plug 'segeljakt/vim-silicon'
+
 " Initialize plugin system
 call plug#end()
 
@@ -198,7 +200,7 @@ let g:ycm_autoclose_preview_window_after_completion = 1  " 补全后自动关闭
 " airline设置
 set laststatus=2
 " 使用powerline打过补丁的字体
-let g:airline_powerline_fonts = 1
+"let g:airline_powerline_fonts = 1
 " 开启tabline
 let g:airline#extensions#tabline#enabled = 1
 " tabline中当前buffer两端的分隔字符
