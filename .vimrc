@@ -60,10 +60,6 @@ Plug 'jistr/vim-nerdtree-tabs'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'segeljakt/vim-silicon'
 
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
-Plug 'rust-lang/rust.vim'
-
 
 " Initialize plugin system
 call plug#end()
@@ -82,9 +78,13 @@ set guioptions=                 "去掉两边的scrollbar
 "始终开启标志列
 let g:ale_sign_column_always = 1
 let g:ale_set_highlights = 0
-"自定义error和warning图标
-let g:ale_sign_error = '✗'
-let g:ale_sign_warning = '⚡'
+""自定义error和warning图标
+"let g:ale_sign_error = '✗'
+"let g:ale_sign_warning = '⚡'
+
+let g:ale_sign_error = "✗"
+let g:ale_sign_warning = "⚠"
+
 "在vim自带的状态栏中整合ale
 let g:ale_statusline_format = ['✗ %d', '⚡ %d', '✔ OK']
 "显示Linter名称,出错或警告等相关信息
@@ -107,15 +107,27 @@ let g:ale_completion_enabled = 1
 " Set this variable to 1 to fix files when you save them.
 let g:ale_fix_on_save = 1
 
+" enable rls as rust default linter
+let g:ale_linters = {
+\   'rust': ['rls', 'cargo', 'rustc'],
+\		'go': ['gopls'],
+\}
+
 " set fixers
-"let g:ale_fixers = {
-"\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-"\   'rust': ['rustfmt'],
-"\}
+let g:ale_fixers = {
+\   'rust': ['rustfmt'],
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\}
 
 "普通模式下，sp前往上一个错误或警告，sn前往下一个错误或警告
 nmap sp <Plug>(ale_previous_wrap)
 nmap sn <Plug>(ale_next_wrap)
+
+" 普通模式下gd跳转到定义
+nmap gd <Plug>(ale_go_to_definition)
+" 普通模式下fr查找所有引用
+nmap fr <Plug>(ale_find_references)
+
 "<Leader>s触发/关闭语法检查
 nmap <Leader>s :ALEToggle<CR>
 "<Leader>d查看错误或警告的详细信息
@@ -192,39 +204,3 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 " 映射切换buffer的键位
 nnoremap [b :bp<CR>
 nnoremap ]b :bn<CR>
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"vim-go
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:go_test_timeout = '10s'
-"let g:go_gocode_unimported_packages = 1
-let g:go_fmt_command = "goimports"
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_generate_tags = 1
-let g:go_textobj_include_function_doc = 1
-let g:go_decls_includes = "func,type"
-" let g:go_auto_type_info = 1
-
-let mapleader = ","
-autocmd FileType go nmap <leader>t  <Plug>(go-test)
-autocmd FileType go nmap <leader>b  <Plug>(go-build)
-autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
-autocmd FileType go nmap <Leader>i <Plug>(go-info)
-autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
-autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"rust
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set hidden
-let g:rustfmt_autosave = 1
