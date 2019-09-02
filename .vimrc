@@ -58,15 +58,12 @@ Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-
-"Plug 'valloric/youcompleteme'
+Plug 'segeljakt/vim-silicon'
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 Plug 'rust-lang/rust.vim'
-Plug 'racer-rust/vim-racer'
 
-Plug 'segeljakt/vim-silicon'
 
 " Initialize plugin system
 call plug#end()
@@ -109,6 +106,12 @@ let g:ale_completion_enabled = 1
 
 " Set this variable to 1 to fix files when you save them.
 let g:ale_fix_on_save = 1
+
+" set fixers
+"let g:ale_fixers = {
+"\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+"\   'rust': ['rustfmt'],
+"\}
 
 "普通模式下，sp前往上一个错误或警告，sn前往下一个错误或警告
 nmap sp <Plug>(ale_previous_wrap)
@@ -170,29 +173,6 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 nmap <F5> :NERDTreeToggle<cr>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ycm
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ycm_python_binary_path = '/usr/bin/python3'
-"let g:ycm_path_to_python_interpreter = '/usr/bin/python3'
-let g:ycm_key_list_select_completion = ['<c-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
-let g:ycm_autoclose_preview_window_after_completion = 1  " 补全后自动关闭preview
-"let g:ycm_collect_identifiers_from_tags_files = 1           " 开启 YCM 基于标签引擎
-"let g:ycm_collect_identifiers_from_comments_and_strings = 1 " 注释与字符串中的内容也用于补全
-"let g:syntastic_ignore_files=[".*\.py$"]
-"let g:ycm_seed_identifiers_with_syntax = 1                  " 语法关键字补全
-"let g:ycm_complete_in_comments = 1
-"let g:ycm_confirm_extra_conf = 0
-"let g:ycm_complete_in_comments = 1                          " 在注释输入中也能补全
-"let g:ycm_complete_in_strings = 1                           " 在字符串输入中也能补全
-"let g:ycm_collect_identifiers_from_comments_and_strings = 1 " 注释和字符串中的文字也会被收入补全
-"let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-""let g:ycm_show_diagnostics_ui = 0                           " 禁用语法检查
-"inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>" |            " 回车即选中当前项
-"nnoremap <F5> :YcmCompleter GoToDefinitionElseDeclaration<CR>
-"let g:ycm_min_num_of_chars_for_completion=2                 " 从第2个键入字符就开始罗列匹配项"
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "vim-airline
@@ -248,12 +228,3 @@ autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set hidden
 let g:rustfmt_autosave = 1
-let g:syntastic_rust_checkers = ['cargo']
-let g:racer_cmd = "racer"
-let g:racer_experimental_completer = 1
-let g:racer_insert_paren = 1
-"nnoremap <buffer> <silent> gd :<Plug>(rust-def)<cr>
-
-autocmd FileType rust nmap gd <Plug>(rust-def)
-autocmd FileType rust nmap gs <Plug>(rust-def-split)
-autocmd FileType rust nmap gx <Plug>(rust-def-vertical)
