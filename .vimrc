@@ -59,8 +59,12 @@ Plug 'jistr/vim-nerdtree-tabs'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'segeljakt/vim-silicon'
 
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'rust-lang/rust.vim'
 
 
@@ -147,6 +151,44 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 " 映射切换buffer的键位
 nnoremap [b :bp<CR>
 nnoremap ]b :bn<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"vim-lsp
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:lsp_signs_enabled = 1         " enable signs
+let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
+let g:lsp_signs_error = {'text': '✗'}
+let g:lsp_signs_warning = {'text': '⚡'} " icons require GUI
+let g:lsp_signs_hint = {'text': '🔨'} " icons require GUI
+
+"let g:lsp_highlights_enabled = 0
+"let g:lsp_textprop_enabled = 0
+highlight link LspErrorText GruvboxRedSign  
+highlight clear LspWarningLine
+if executable('rls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
+        \ 'whitelist': ['rust'],
+        \ })
+endif
+
+" logging
+let g:lsp_log_verbose = 1
+let g:lsp_log_file = expand('~/.vim/vim-lsp.log')
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"asyncomplete
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set completeopt+=preview
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+imap <c-space> <Plug>(asyncomplete_force_refresh)
+
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
