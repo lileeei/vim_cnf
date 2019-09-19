@@ -128,6 +128,8 @@ nmap gd <Plug>(ale_go_to_definition)
 " 普通模式下fr查找所有引用
 nmap fr <Plug>(ale_find_references)
 
+nmap ,i <Plug>(ale_hover)
+
 "<Leader>s触发/关闭语法检查
 nmap <Leader>s :ALEToggle<CR>
 "<Leader>d查看错误或警告的详细信息
