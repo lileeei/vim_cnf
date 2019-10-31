@@ -116,6 +116,7 @@ let g:ale_linters = {
 " set fixers
 let g:ale_fixers = {
 \   'rust': ['rustfmt'],
+\   'go': ['goimports'],
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \}
 
