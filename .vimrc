@@ -1,3 +1,4 @@
+"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " global setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -47,7 +48,10 @@ Plug 'morhetz/gruvbox'
 Plug 'w0rp/ale'
 Plug 'sheerun/vim-polyglot'
 
-Plug 'SirVer/ultisnips'
+"
+"
+"
+"Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 Plug 'tpope/vim-fugitive'
@@ -59,6 +63,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'segeljakt/vim-silicon'
+
+Plug 'liuchengxu/vim-clap', { 'do': function('clap#helper#build_all') }
 
 
 " Initialize plugin system
@@ -136,16 +142,16 @@ nmap <Leader>s :ALEToggle<CR>
 "<Leader>d查看错误或警告的详细信息
 nmap <Leader>d :ALEDetail<CR>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"ultisnips
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""ultisnips
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"
+"" If you want :UltiSnipsEdit to split your window.
+"let g:UltiSnipsEditSplit="vertical"
 
 
 
