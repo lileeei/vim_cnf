@@ -10,6 +10,7 @@ set nocompatible
 " 解决Vim插入模式下backspace按键无法删除字符的问题
 set backspace=indent,eol,start
 set number
+set rnu
 set cursorline
 set hlsearch
 
@@ -64,7 +65,7 @@ Plug 'jistr/vim-nerdtree-tabs'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'segeljakt/vim-silicon'
 
-Plug 'liuchengxu/vim-clap', { 'do': function('clap#helper#build_all') }
+Plug 'liuchengxu/vim-clap'
 
 
 " Initialize plugin system
