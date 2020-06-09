@@ -67,7 +67,6 @@ Plug 'segeljakt/vim-silicon'
 
 Plug 'liuchengxu/vim-clap'
 
-
 " Initialize plugin system
 call plug#end()
 
@@ -111,21 +110,25 @@ let g:ale_list_window_size = 5
 " This setting must be set before ALE is loaded.
 let g:ale_completion_enabled = 1
 
+
 " Set this variable to 1 to fix files when you save them.
 let g:ale_fix_on_save = 1
 
 " enable rls as rust default linter
+" 'rust': ['rls', 'cargo', 'rustc'],
 let g:ale_linters = {
-\   'rust': ['rls', 'cargo', 'rustc'],
-\		'go': ['gopls'],
-\}
+			\		'go': ['gopls'],
+			\   'rust': ['analyzer'],
+			\}
 
 " set fixers
+" 'rust': ['rustfmt'],
 let g:ale_fixers = {
-\   'rust': ['rustfmt'],
-\   'go': ['goimports'],
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\}
+			\	 'go': ['gofmt', 'goimports'],
+			\  'rust': ['rustfmt'],
+			\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+			\}
+
 
 "普通模式下，sp前往上一个错误或警告，sn前往下一个错误或警告
 nmap sp <Plug>(ale_previous_wrap)
