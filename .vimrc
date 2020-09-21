@@ -32,6 +32,8 @@ set maxmempattern=5000
 set ffs=unix,dos,mac
 set ff=unix
 
+set rtp+=/usr/local/opt/fzf
+
 " Enable syntax highlighting
 syntax enable
 
@@ -136,6 +138,8 @@ nmap sn <Plug>(ale_next_wrap)
 
 " 普通模式下gd跳转到定义
 nmap gd <Plug>(ale_go_to_definition)
+" 普通模式下跳转到定义
+nmap gt <Plug>(ale_go_to_type_definition)
 " 普通模式下fr查找所有引用
 nmap fr <Plug>(ale_find_references)
 
@@ -172,13 +176,12 @@ let g:fzf_action = { 'ctrl-e': 'edit' }
 "autocmd vimenter * NERDTree
 "map <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
-let g:NERDTreeShowIgnoredStatus = 1
+let g:NERDTreeGitStatusShowIgnored= 1
 let g:NERDTreeIgnore=['\.d$[[dir]]', '\.o$[[file]]']
 let NERDTreeNodeDelimiter="\u00a0"
-"let g:nerdtree_tabs_open_on_console_startup=1
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom= {
 			\ "Modified"  : "✹",
    		\ "Staged"    : "✚",
    		\ "Untracked" : "✭",
