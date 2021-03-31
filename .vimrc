@@ -127,7 +127,7 @@ let g:ale_linters = {
 " 'rust': ['rustfmt'],
 let g:ale_fixers = {
 			\	 'go': ['gofmt', 'goimports'],
-			\  'rust': ['rustfmt'],
+			\  'rust': ['cargo'],
 			\   '*': ['remove_trailing_lines', 'trim_whitespace'],
 			\}
 
@@ -150,14 +150,14 @@ nmap <Leader>s :ALEToggle<CR>
 "<Leader>d查看错误或警告的详细信息
 nmap <Leader>d :ALEDetail<CR>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""ultisnips
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-"let g:UltiSnipsExpandTrigger="<tab>"
-"let g:UltiSnipsJumpForwardTrigger="<c-b>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"ultisnips
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
 "" If you want :UltiSnipsEdit to split your window.
 "let g:UltiSnipsEditSplit="vertical"
 
